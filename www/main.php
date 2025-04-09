@@ -20,7 +20,7 @@ session_start();
     </head>
         <body>
             <form>
-            <p><img src="pro_burger.png" alt="profile_img" width="150" height="150"></p>
+            <p><img src="../img/pro_burger.png" alt="profile_img" width="150" height="150"></p>
             <h1>Welcome back, <?php echo htmlspecialchars($userid);?></h1>
             </form>
         </body>

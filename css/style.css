@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background-image: url('BurgerBG.png'); /* ← 이미지 이름에 맞게 바꿔주세요 */
+    background-image: url('..img/BurgerBG.png'); /* ← 이미지 이름에 맞게 바꿔주세요 */
     background-size: cover;
     background-position: center;
     display: flex;

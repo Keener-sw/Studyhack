@@ -1,0 +1,103 @@
+/* 배경 전체 설정 */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url('BurgerBG.png'); /* ← 이미지 이름에 맞게 바꿔주세요 */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+  }
+  
+  /* 로그인 박스 */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4);  /* ← 반투명 흰색 */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), 0 0 40px rgba(255,0,255,0.2);
+    backdrop-filter: blur(12px); /* 배경 흐림 효과 */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 350px;
+    animation: fadeInUp 1s ease forwards;
+  }
+  
+  
+  /* 에러 메시지 */
+  .error {
+    color: #ff4d4d;
+    text-shadow: 0 0 5px red;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  .form-group{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  label{
+    width: 80px;
+    margin-right: 10px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 6px;
+    text-shadow: 0 0 5px #0ff;
+  }
+  input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.6);       /* 아주 어두운 검정 */
+    color: #0ff;
+    font-size: 14px;
+    box-shadow: inset 0 0 10px #0ff;
+  }
+  
+  input::placeholder {
+    color: #888;                  /* 플레이스홀더는 연한 회색 */
+  }
+  button {
+    background-color: transparent;
+    color: #f0f;
+    border: 2px solid #f0f;
+    padding: 12px;
+    width: 80%;
+    max-width: 300px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-shadow: 0 0 5px #f0f;
+    box-shadow: 0 0 10px #f0f, 0 0 20px #f0f inset;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    background-color: #f0f;
+    color: black;
+    text-shadow: none;
+    box-shadow: 0 0 20px #fff, 0 0 30px #fff;
+  }
+
+  @keyframes fadeInUp{
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }

@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') #서버에서 요청이 들어왔을 �
     <head>
         <title>Login</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../css/style.css">
     <style>
         .error { color: red; }
         input, button { padding: 8px; margin: 5px 0; }

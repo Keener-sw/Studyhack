@@ -16,7 +16,7 @@ session_start();
     <head>
         <meta charset="UTF-8">
         <title>나의 페이지</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../css/style.css">
     </head>
         <body>
             <form>

@@ -1,21 +1,24 @@
 <?php 
 session_start();
 
+$pdo = new PDO(dsn: "mysql:host=mysql-container;dbname=users;charset=utf8",username:"root",password:"admin");
 $error = '';
 if($_SERVER['REQUEST_METHOD'] === 'POST') #서버에서 요청이 들어왔을 때 동작
 {
     $userid = $_POST['id'];
     $userpw = $_POST['pw'];
-    $rid = 'Keener';
-    $rpw = '1q2w3e4r!';
-    if($userid === 'Keener' && $userpw ==='1q2w3e4r!'){
-        $_SESSION['userid'] = $userid;
-        header('Location: main.php');
+    $stmt = $pdo->prepare('Select * from priv_info WHERE id = ?');
+    $stmt->execute([$userid]);  
+    $user = $stmt->fetch();
+
+    // 2. 사용자 + 비밀번호 확인
+    if ($user && password_verify(password: $userpw, hash: $user['pwd'])) {
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['name'];
+        header('Location: main.php'); // 리디렉션도 가능
         exit();
-    }
-    else
-    {
-        $error = "아이디 또는 패스워드가 틀렸습니다.";
+    } else {
+        $error = "아이디 또는 비밀번호가 잘못되었습니다.";
     }
 } ?>
 
@@ -46,6 +49,5 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') #서버에서 요청이 들어왔을 �
     </div>
     <button type="submit">로그인</button>
   </form>
-
 </body>
 </html>

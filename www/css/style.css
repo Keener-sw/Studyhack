@@ -212,3 +212,35 @@ body {
     color: #000;
     text-shadow: none;
   }
+  
+  .modal {
+    position: absolute;
+    top: 100%;  /* 버튼 바로 아래 */
+    right: 0;   /* 버튼 기준 우측 정렬 */
+    background-color: rgba(0,0,0,0.5);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+  }
+  
+  .modal.show {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .modal-content {
+    background: rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 250px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    transform: translateX(20px);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+  }
+  
+  .modal.show .modal-content {
+    transform: translateX(0);
+    opacity: 1;
+  }

@@ -1,13 +1,19 @@
 <?php 
-session_start();
+require_once(__DIR__ ."/init.php");
+if(isset($_SESSION['user_id']))
+{
+    header('Location = main.php');
+}
+else{
+    exit();
+}
 
-$pdo = new PDO(dsn: "mysql:host=mysql-container;dbname=users;charset=utf8",username:"root",password:"admin");
 $error = '';
 if($_SERVER['REQUEST_METHOD'] === 'POST') #서버에서 요청이 들어왔을 때 동작
 {
     $userid = $_POST['id'];
     $userpw = $_POST['pw'];
-    $stmt = $pdo->prepare('Select * from priv_info WHERE id = ?');
+    $stmt = $db_connect->prepare('Select * from priv_info WHERE id = ?');
     $stmt->execute([$userid]);  
     $user = $stmt->fetch();
 
@@ -15,6 +21,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') #서버에서 요청이 들어왔을 �
     if ($user && password_verify(password: $userpw, hash: $user['pwd'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['name'];
+        setcookie('usercookie',$user['id'],time()+ 3600,'/','',true,true);
         header('Location: main.php'); // 리디렉션도 가능
         exit();
     } else {

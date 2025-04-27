@@ -1,12 +1,13 @@
 <?php 
-session_start();
-                if(isset($_SESSION['userid']))
+require_once(__DIR__ ."/init.php");
+echo $_SESSION['user_id'];
+                if(isset($_SESSION['user_id']))
                 {
                     $userid = $_SESSION['user_id'];
                 }
                 else
                 {
-                    header(header: 'Location = login.php');
+                    header('Location = login.php');
                     exit();
                 }
                 ?>

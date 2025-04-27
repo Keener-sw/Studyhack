@@ -1,3 +1,11 @@
+<?php
+  require_once __DIR__ . '/../config/db_config.php';
+  if(isset($_SESSION['user_id']))
+  {
+    header('Location = main.php');
+  }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>

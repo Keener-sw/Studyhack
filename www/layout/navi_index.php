@@ -79,7 +79,7 @@ Swal.fire({
                 icon: 'success',
                 title: '회원가입 완료!',
                 showConfirmButton: false,
-                timer: 2000
+                timer: 5000
                 }).then(() => {
                 window.location.href = 'index.php';
             });

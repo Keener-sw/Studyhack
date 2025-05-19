@@ -1,12 +1,14 @@
 <?php 
 require_once(__DIR__ ."/init.php");
-if(isset($_SESSION['user_id']))
-{
-    header('Location = main.php');
-}
-else{
-    exit();
-}
+if(isset($_SESSION['user_id'])) {
+      if(isset($_COOKIE['usercookie'])) {
+          header('Location: main.php');
+          exit();
+      } else {
+          session_destroy();
+          setcookie('usercookie', '', time() - 3600, '/');
+      }
+  }
 
 $error = '';
 if($_SERVER['REQUEST_METHOD'] === 'POST') #서버에서 요청이 들어왔을 때 동작
@@ -34,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') #서버에서 요청이 들어왔을 �
     <head>
         <title>Login</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="/css/style.css">
     <style>
         .error { color: red; }
         input, button { padding: 8px; margin: 5px 0; }

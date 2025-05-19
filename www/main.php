@@ -1,22 +1,26 @@
 <?php 
 require_once(__DIR__ ."/init.php");
-echo $_SESSION['user_id'];
-                if(isset($_SESSION['user_id']))
-                {
-                    $userid = $_SESSION['user_id'];
-                }
-                else
-                {
-                    header('Location = login.php');
-                    exit();
-                }
-                ?>
+if(isset($_SESSION['user_id'])) {
+      if(isset($_COOKIE['usercookie'])) {
+          $userid = $_SESSION['user_id'];
+      } else {
+            header('Location: login.php');
+            exit();
+      }
+  }
+else {
+    header('Location: login.php');
+    exit();
+}
+?>
+
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>나의 페이지</title>
+        <?php   require_once __DIR__ .'/layout/navi_main.php'; ?>
         <link rel="stylesheet" href="../css/style.css">
     </head>
         <body>

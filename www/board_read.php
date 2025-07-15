@@ -20,7 +20,9 @@ if (!$post) {
 
 // 로그인 및 소유자 확인
 $is_owner = false;
-if (isset($_SESSION['user_id']) && isset($_COOKIE['usercookie'])) {
+if (isset($_SESSION['is_admin'])) {
+    $is_owner = true; // 관리자도 게시글 수정/삭제 가능
+} elseif (isset($_SESSION['user_id']) && isset($_COOKIE['usercookie'])) {
     if ($_SESSION['user_id'] == $post['post_owner']) {
         $is_owner = true;
     }
@@ -28,13 +30,15 @@ if (isset($_SESSION['user_id']) && isset($_COOKIE['usercookie'])) {
     echo "<script>alert('Please login again'); location.href='login.php';</script>";
     exit();
 }
+
+
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title><?= htmlspecialchars($post['post_title']) ?></title>
-        <?php require_once __DIR__ .'/layout/navi_index.php'; ?>
+        <?php require_once __DIR__ .'/layout/navi_main.php'; ?>
         <link rel="stylesheet" href="/css/style.css">
         <style>
             .read-form {

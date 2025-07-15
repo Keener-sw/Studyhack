@@ -7,7 +7,7 @@ if(isset($_SESSION['user_id'])) {
               //echo 'Administrator mode: You have full access to the system.';
           }
           else{
-                echo $_SESSION['debug'];
+                //echo $_SESSION['debug'];
           }
       } else {
             header('Location: login.php');

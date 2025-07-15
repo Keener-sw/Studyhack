@@ -19,7 +19,7 @@ else {
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>나의 페이지</title>
+        <title>Future Burger</title>
         <?php   require_once __DIR__ .'/layout/navi_main.php'; ?>
         <link rel="stylesheet" href="../css/style.css">
     </head>
@@ -27,16 +27,7 @@ else {
             <form>
             <p><img src="../img/pro_burger.png" alt="profile_img" width="150" height="150"></p>
             <h1>Welcome back, <?php echo htmlspecialchars($userid);?></h1>
-            <p>Check your score to click the button down below~</p>
-            <button type=button onclick=find_score()>Click</button><br>
-            <div id="myScore"></div>
-            <script>
-                function find_score(){
-                    fetch('find_score.php')
-                        .then(response => response.json())
-                        .then(data => {document.getElementById('myScore').innerText = "Your score is  " + data.score;});
-                }
-            </script>
+            <button type="button" onclick="location.href='public_board.php'">Get inside</button>
             </form>
         </body>
 </html>

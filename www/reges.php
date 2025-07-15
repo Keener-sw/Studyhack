@@ -1,16 +1,6 @@
 <?php
 require_once __DIR__ . '/init.php';
-/*session_start();
-require_once __DIR__ . '/../config/db_config.php';
-// DB 연결 설정
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("DB 연결 실패: " . $e->getMessage());
-}
-*/
 // JSON 데이터 받아오기
 $data = json_decode(file_get_contents(filename: 'php://input'), associative: true);
 

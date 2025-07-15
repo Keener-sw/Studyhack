@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') #서버에서 요청이 들어왔을 �
     $stmt->execute([$userid]);  
     $user = $stmt->fetch();
 
-    // 2. 사용자 + 비밀번호 확인
+    // 사용자 + 비밀번호 확인
     if ($user && password_verify(password: $userpw, hash: $user['pwd'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['name'];
@@ -36,6 +36,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') #서버에서 요청이 들어왔을 �
     <head>
         <title>Login</title>
         <meta charset="utf-8">
+        <?php   require_once __DIR__ .'/layout/navi_index.php'; ?>
         <link rel="stylesheet" href="/css/style.css">
     <style>
         .error { color: red; }

@@ -3,6 +3,12 @@ require_once(__DIR__ ."/init.php");
 if(isset($_SESSION['user_id'])) {
       if(isset($_COOKIE['usercookie'])) {
           $userid = $_SESSION['user_id'];
+          if(isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
+              //echo 'Administrator mode: You have full access to the system.';
+          }
+          else{
+                echo $_SESSION['debug'];
+          }
       } else {
             header('Location: login.php');
             exit();

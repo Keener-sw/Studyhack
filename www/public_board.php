@@ -16,7 +16,13 @@ if(isset($_SESSION['user_id'])) {
 $search = $_GET['search'] ?? '';
 $search_field = $_GET['search_field'] ?? 'post_title';
 $params = [];
-$where = "post_private = 0";
+if(isset($_SESSION['is_admin']) && $_SESSION['user_id'] === 'admin') {
+    // 관리자일 경우 모든 게시글을 조회
+    $where = "1=1"; // 모든 게시글 조회
+    //echo "관리자 모드: 모든 게시글을 조회합니다.";
+} else {
+    $where = "post_private = 0";
+}
 $allowed_fields = ['post_title', 'post_content', 'post_owner'];
 if (!in_array($search_field, $allowed_fields)) {
     $search_field = 'post_title';

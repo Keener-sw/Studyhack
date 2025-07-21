@@ -1,3 +1,4 @@
+<!--사용하지 않음-->
 <?php
     session_start();
     require_once __DIR__ . '/../config/db_config.php';
